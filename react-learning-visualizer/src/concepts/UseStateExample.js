@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const StateConcept = () => {
+const UseStateExample = () => {
   const [count, setCount] = useState(0);
 
   const increment = () => {
@@ -44,4 +44,4 @@ const StateConcept = () => {
   );
 };
 
-export default StateConcept;
+export default UseStateExample;

@@ -1,16 +1,25 @@
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ThemeProvider } from './styles/ThemeProvider';
+import { GlobalStyles } from './styles/GlobalStyles';
+import MainLayout from './layout/MainLayout';
+import HomePage from './pages/HomePage';
+import ConceptPage from './pages/ConceptPage';
 import './App.css';
-import StateConcept from './components/StateConcept';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>React Concepts Visualizer</h1>
-      </header>
-      <main>
-        <StateConcept />
-      </main>
-    </div>
+    <ThemeProvider>
+      <GlobalStyles />
+      <Router>
+        <MainLayout>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/concept/:conceptId" element={<ConceptPage />} />
+          </Routes>
+        </MainLayout>
+      </Router>
+    </ThemeProvider>
   );
 }
 
