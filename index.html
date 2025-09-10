@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Learning Project</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: '#da373d',
+            }
+          }
+        }
+      }
+    </script>
+
+    <!-- React and ReactDOM -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+    <!-- Babel -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <!-- React Router -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-router-dom/5.2.0/react-router-dom.min.js"></script>
+
+    <!-- Framer Motion -->
+    <script type="module">
+      import { motion } from "https://cdn.skypack.dev/framer-motion";
+      window.motion = motion;
+    </script>
+
+</head>
+<body>
+    <div id="root"></div>
+
+    <!-- Your React code will go here -->
+    <script src="src/concepts.js" type="text/babel"></script>
+    <script src="src/components/CodeSnippet.js" type="text/babel"></script>
+    <script src="src/components/DarkModeToggle.js" type="text/babel"></script>
+    <script src="src/components/Header.js" type="text/babel"></script>
+    <script src="src/concepts/JsxBasics.js" type="text/babel"></script>
+    <script src="src/pages/HomePage.js" type="text/babel"></script>
+    <script src="src/pages/ConceptPage.js" type="text/babel"></script>
+    <script src="src/components/Sidebar.js" type="text/babel"></script>
+    <script src="src/App.js" type="text/babel"></script>
+    <script type="text/babel">
+      const root = ReactDOM.createRoot(document.getElementById('root'));
+      root.render(<App />);
+    </script>
+</body>
+</html>
