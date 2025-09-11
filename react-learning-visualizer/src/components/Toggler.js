@@ -3,8 +3,8 @@ import { useTheme } from '../styles/ThemeProvider';
 import styled from 'styled-components';
 
 const Button = styled.button`
-  background: ${({ theme }) => theme.background};
-  border: 2px solid ${({ theme }) => theme.toggleBorder};
+  background: ${({ theme }) => theme.body};
+  border: 2px solid ${({ theme }) => theme.text};
   color: ${({ theme }) => theme.text};
   border-radius: 30px;
   cursor: pointer;

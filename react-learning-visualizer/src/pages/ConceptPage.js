@@ -1,5 +1,4 @@
 import React from 'react';
-import { useParams, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { concepts } from '../data/concepts';
 
@@ -14,7 +13,7 @@ const ConceptContainer = styled.div`
     margin-bottom: 20px;
   }
   .code-block {
-    background-color: #f0f0f0;
+    background-color: ${({ theme }) => theme.codeBg};
     padding: 20px;
     border-radius: 5px;
     white-space: pre-wrap;
@@ -23,16 +22,7 @@ const ConceptContainer = styled.div`
 `;
 
 const ConceptPage = () => {
-  const { conceptId } = useParams();
-  const conceptIndex = concepts.findIndex((c) => c.id === conceptId);
-  const concept = concepts[conceptIndex];
-
-  if (!concept) {
-    return <div>Concept not found</div>;
-  }
-
-  const prevConcept = conceptIndex > 0 ? concepts[conceptIndex - 1] : null;
-  const nextConcept = conceptIndex < concepts.length - 1 ? concepts[conceptIndex + 1] : null;
+  const concept = concepts[0];
 
   return (
     <ConceptContainer>
@@ -51,10 +41,6 @@ const ConceptPage = () => {
         <pre className="code-block">
           <code>{concept.code}</code>
         </pre>
-      </div>
-      <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'space-between' }}>
-        {prevConcept && <Link to={`/concept/${prevConcept.id}`}>Previous: {prevConcept.title}</Link>}
-        {nextConcept && <Link to={`/concept/${nextConcept.id}`}>Next: {nextConcept.title}</Link>}
       </div>
     </ConceptContainer>
   );

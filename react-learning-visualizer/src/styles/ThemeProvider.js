@@ -9,14 +9,18 @@ const lightTheme = {
   body: '#FFF',
   text: '#363537',
   toggleBorder: '#FFF',
-  background: '#363537',
+  background: '#f0f0f0',
+  sidebarBg: '#f0f0f0',
+  codeBg: '#f0f0f0',
 };
 
 const darkTheme = {
-  body: '#363537',
+  body: '#000000',
   text: '#FAFAFA',
   toggleBorder: '#6B8096',
-  background: '#999',
+  background: '#222222',
+  sidebarBg: '#1a1a1a',
+  codeBg: '#2a2a2a',
 };
 
 export const ThemeProvider = ({ children }) => {
