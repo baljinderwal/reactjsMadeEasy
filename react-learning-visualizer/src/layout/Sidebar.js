@@ -5,10 +5,12 @@ import { concepts } from '../data/concepts';
 
 const SidebarContainer = styled.aside`
   width: 250px;
-  background-color: #f0f0f0;
+  background-color: ${({ theme }) => theme.sidebar.background};
+  color: ${({ theme }) => theme.sidebar.text};
   padding: 20px;
   height: 100%;
   overflow-y: auto;
+  transition: all 0.50s linear;
 `;
 
 const Sidebar = () => {
