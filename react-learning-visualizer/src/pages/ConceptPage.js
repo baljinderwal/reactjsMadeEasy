@@ -14,11 +14,13 @@ const ConceptContainer = styled.div`
     margin-bottom: 20px;
   }
   .code-block {
-    background-color: #f0f0f0;
+    background-color: ${({ theme }) => theme.sidebar.background};
+    color: ${({ theme }) => theme.sidebar.text};
     padding: 20px;
     border-radius: 5px;
     white-space: pre-wrap;
     word-wrap: break-word;
+    transition: all 0.50s linear;
   }
 `;
 
