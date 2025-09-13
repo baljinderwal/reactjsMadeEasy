@@ -7,6 +7,9 @@ import ContextExample from '../concepts/ContextExample';
 import UseReducerExample from '../concepts/UseReducerExample';
 import ReactRouterExample from '../concepts/ReactRouterExample';
 import MemoizationExample from '../concepts/MemoizationExample';
+import ConditionalRenderingExample from '../concepts/ConditionalRenderingExample';
+import ListsAndKeysExample from '../concepts/ListsAndKeysExample';
+import ControlledComponentsExample from '../concepts/ControlledComponentsExample';
 
 export const concepts = [
   {
@@ -360,6 +363,134 @@ const MemoizationExample = () => {
 };
 
 export default MemoizationExample;
+    `,
+  },
+  {
+    id: 'conditional-rendering',
+    title: 'Conditional Rendering',
+    explanation:
+      'Conditional rendering in React works the same way conditions work in JavaScript. Use JavaScript operators like if or the conditional operator to create elements representing the current state, and let React update the UI to match them.',
+    component: <ConditionalRenderingExample />,
+    code: `
+import React, { useState } from 'react';
+
+const UserGreeting = () => <h2>Welcome back!</h2>;
+const GuestGreeting = () => <h2>Please sign up.</h2>;
+
+const ConditionalRenderingExample = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleLoginClick = () => {
+    setIsLoggedIn(true);
+  };
+
+  const handleLogoutClick = () => {
+    setIsLoggedIn(false);
+  };
+
+  return (
+    <div>
+      {isLoggedIn ? <UserGreeting /> : <GuestGreeting />}
+      {isLoggedIn ? (
+        <button onClick={handleLogoutClick}>Logout</button>
+      ) : (
+        <button onClick={handleLoginClick}>Login</button>
+      )}
+      <hr />
+      <p>
+        In this example, we are showing different greetings based on the
+        'isLoggedIn' state. This is a common way to do conditional rendering in
+        React.
+      </p>
+    </div>
+  );
+};
+
+export default ConditionalRenderingExample;
+    `,
+  },
+  {
+    id: 'lists-and-keys',
+    title: 'Lists and Keys',
+    explanation:
+      'Keys help React identify which items have changed, are added, or are removed. Keys should be stable, predictable, and unique. They are used to give elements in an array a stable identity.',
+    component: <ListsAndKeysExample />,
+    code: `
+import React from 'react';
+
+const NumberList = ({ numbers }) => {
+  const listItems = numbers.map((number) => (
+    <li key={number.toString()}>{number}</li>
+  ));
+  return <ul>{listItems}</ul>;
+};
+
+const ListsAndKeysExample = () => {
+  const numbers = [1, 2, 3, 4, 5];
+  const fruits = ['apple', 'banana', 'orange'];
+
+  return (
+    <div>
+      <h3>Rendering a list of numbers:</h3>
+      <NumberList numbers={numbers} />
+      <h3>Rendering a list of strings:</h3>
+      <ul>
+        {fruits.map((fruit) => (
+          <li key={fruit}>{fruit}</li>
+        ))}
+      </ul>
+      <hr />
+      <p>
+        Keys help React identify which items have changed, are added, or are
+        removed. Keys should be stable, predictable, and unique.
+      </p>
+    </div>
+  );
+};
+
+export default ListsAndKeysExample;
+    `,
+  },
+  {
+    id: 'controlled-components',
+    title: 'Controlled Components',
+    explanation:
+      'In HTML, form elements such as <input>, <textarea>, and <select> typically maintain their own state and update it based on user input. In React, mutable state is typically kept in the state property of components, and only updated with setState(). We can combine the two by making the React state be the “single source of truth”. An input form element whose value is controlled by React in this way is called a “controlled component”.',
+    component: <ControlledComponentsExample />,
+    code: `
+import React, { useState } from 'react';
+
+const ControlledComponentsExample = () => {
+  const [inputValue, setInputValue] = useState('');
+
+  const handleChange = (event) => {
+    setInputValue(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    alert('A name was submitted: ' + inputValue);
+    event.preventDefault();
+  };
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Name:
+          <input type="text" value={inputValue} onChange={handleChange} />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
+      <h3>Current input value: {inputValue}</h3>
+      <hr />
+      <p>
+        In a controlled component, form data is handled by the component's state. The state is the single source of truth.
+      </p>
+    </div>
+  );
+};
+
+export default ControlledComponentsExample;
     `,
   },
 ];
