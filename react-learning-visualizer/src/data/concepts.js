@@ -1,25 +1,9 @@
-import UseStateExample from '../concepts/UseStateExample';
-import JsxBasicsExample from '../concepts/JsxBasicsExample';
-import PropsExample from '../concepts/PropsExample';
-import UseEffectExample from '../concepts/UseEffectExample';
-import UseRefExample from '../concepts/UseRefExample';
-import ContextExample from '../concepts/ContextExample';
-import UseReducerExample from '../concepts/UseReducerExample';
-import ReactRouterExample from '../concepts/ReactRouterExample';
-import MemoizationExample from '../concepts/MemoizationExample';
-import ConditionalRenderingExample from '../concepts/ConditionalRenderingExample';
-import ListsAndKeysExample from '../concepts/ListsAndKeysExample';
-import ControlledComponentsExample from '../concepts/ControlledComponentsExample';
-
 export const concepts = [
   {
     id: 'usestate',
     title: 'useState Hook',
     explanation: 'The useState hook lets you add state to function components.',
-    component: <UseStateExample />,
     code: `
-import React, { useState } from 'react';
-
 const UseStateExample = () => {
   const [count, setCount] = useState(0);
 
@@ -40,17 +24,14 @@ const UseStateExample = () => {
   );
 };
 
-export default UseStateExample;
+render(<UseStateExample />);
     `,
   },
   {
     id: 'jsx-basics',
     title: 'JSX Basics',
     explanation: 'JSX is a syntax extension for JavaScript that lets you write HTML-like markup inside a JavaScript file.',
-    component: <JsxBasicsExample />,
     code: `
-import React from 'react';
-
 const JsxBasicsExample = () => {
   const user = {
     firstName: 'John',
@@ -70,17 +51,14 @@ const JsxBasicsExample = () => {
   );
 };
 
-export default JsxBasicsExample;
+render(<JsxBasicsExample />);
     `,
   },
   {
     id: 'props',
     title: 'Props',
     explanation: 'Props (short for properties) are read-only attributes used to pass data from a parent component to a child component.',
-    component: <PropsExample />,
     code: `
-import React from 'react';
-
 const ChildComponent = (props) => {
   return (
     <div style={{ border: '1px solid blue', padding: '10px', margin: '10px' }}>
@@ -104,7 +82,7 @@ const PropsExample = () => {
   );
 };
 
-export default PropsExample;
+render(<PropsExample />);
     `,
   },
   {
@@ -112,10 +90,7 @@ export default PropsExample;
     title: 'useEffect Hook',
     explanation:
       'The useEffect hook lets you perform side effects in function components. The dependency array controls when the effect runs.',
-    component: <UseEffectExample />,
     code: `
-import React, { useState, useEffect } from 'react';
-
 const UseEffectExample = () => {
   const [count, setCount] = useState(0);
   const [otherCount, setOtherCount] = useState(0);
@@ -146,7 +121,7 @@ const UseEffectExample = () => {
   );
 };
 
-export default UseEffectExample;
+render(<UseEffectExample />);
     `,
   },
   {
@@ -154,10 +129,7 @@ export default UseEffectExample;
     title: 'useRef Hook',
     explanation:
       'The useRef hook returns a mutable ref object whose .current property is initialized to the passed argument (initialValue). It can be used to access a DOM element directly.',
-    component: <UseRefExample />,
     code: `
-import React, { useRef } from 'react';
-
 const UseRefExample = () => {
   const inputEl = useRef(null);
 
@@ -175,7 +147,7 @@ const UseRefExample = () => {
   );
 };
 
-export default UseRefExample;
+render(<UseRefExample />);
     `,
   },
   {
@@ -183,10 +155,7 @@ export default UseRefExample;
     title: 'Context API',
     explanation:
       'The Context API provides a way to pass data through the component tree without having to pass props down manually at every level.',
-    component: <ContextExample />,
     code: `
-import React, { createContext, useContext, useState } from 'react';
-
 // 1. Create a context
 const ThemeContext = createContext();
 
@@ -233,7 +202,7 @@ const ContextExample = () => {
   );
 };
 
-export default ContextExample;
+render(<ContextExample />);
     `,
   },
   {
@@ -241,10 +210,7 @@ export default ContextExample;
     title: 'useReducer Hook',
     explanation:
       'The useReducer hook is an alternative to useState for managing more complex state logic. It is often preferred when you have state that involves multiple sub-values or when the next state depends on the previous one.',
-    component: <UseReducerExample />,
     code: `
-import React, { useReducer } from 'react';
-
 const initialState = { count: 0 };
 
 function reducer(state, action) {
@@ -273,7 +239,7 @@ const UseReducerExample = () => {
   );
 };
 
-export default UseReducerExample;
+render(<UseReducerExample />);
     `,
   },
   {
@@ -281,11 +247,7 @@ export default UseReducerExample;
     title: 'React Router Basics',
     explanation:
       'React Router is a standard library for routing in React. It enables the navigation among views of various components in a React Application, allows changing the browser URL, and keeps the UI in sync with the URL.',
-    component: <ReactRouterExample />,
     code: `
-import React from 'react';
-import { Link, Routes, Route, HashRouter } from 'react-router-dom';
-
 const Home = () => <h2>Home</h2>;
 const About = () => <h2>About</h2>;
 const Contact = () => <h2>Contact</h2>;
@@ -311,7 +273,7 @@ const ReactRouterExample = () => {
   );
 };
 
-export default ReactRouterExample;
+render(<ReactRouterExample />);
     `,
   },
   {
@@ -319,10 +281,7 @@ export default ReactRouterExample;
     title: 'Memoization',
     explanation:
       'Memoization is an optimization technique used to speed up computer programs by storing the results of expensive function calls and returning the cached result when the same inputs occur again. React provides React.memo, useMemo, and useCallback for this purpose.',
-    component: <MemoizationExample />,
     code: `
-import React, { useState, useMemo, useCallback } from 'react';
-
 const ExpensiveCalculationComponent = ({ value }) => {
   const expensiveCalculation = (num) => {
     console.log('Performing expensive calculation...');
@@ -362,7 +321,7 @@ const MemoizationExample = () => {
   );
 };
 
-export default MemoizationExample;
+render(<MemoizationExample />);
     `,
   },
   {
@@ -370,10 +329,7 @@ export default MemoizationExample;
     title: 'Conditional Rendering',
     explanation:
       'Conditional rendering in React works the same way conditions work in JavaScript. Use JavaScript operators like if or the conditional operator to create elements representing the current state, and let React update the UI to match them.',
-    component: <ConditionalRenderingExample />,
     code: `
-import React, { useState } from 'react';
-
 const UserGreeting = () => <h2>Welcome back!</h2>;
 const GuestGreeting = () => <h2>Please sign up.</h2>;
 
@@ -406,7 +362,7 @@ const ConditionalRenderingExample = () => {
   );
 };
 
-export default ConditionalRenderingExample;
+render(<ConditionalRenderingExample />);
     `,
   },
   {
@@ -414,10 +370,7 @@ export default ConditionalRenderingExample;
     title: 'Lists and Keys',
     explanation:
       'Keys help React identify which items have changed, are added, or are removed. Keys should be stable, predictable, and unique. They are used to give elements in an array a stable identity.',
-    component: <ListsAndKeysExample />,
     code: `
-import React from 'react';
-
 const NumberList = ({ numbers }) => {
   const listItems = numbers.map((number) => (
     <li key={number.toString()}>{number}</li>
@@ -448,7 +401,7 @@ const ListsAndKeysExample = () => {
   );
 };
 
-export default ListsAndKeysExample;
+render(<ListsAndKeysExample />);
     `,
   },
   {
@@ -456,10 +409,7 @@ export default ListsAndKeysExample;
     title: 'Controlled Components',
     explanation:
       'In HTML, form elements such as <input>, <textarea>, and <select> typically maintain their own state and update it based on user input. In React, mutable state is typically kept in the state property of components, and only updated with setState(). We can combine the two by making the React state be the “single source of truth”. An input form element whose value is controlled by React in this way is called a “controlled component”.',
-    component: <ControlledComponentsExample />,
     code: `
-import React, { useState } from 'react';
-
 const ControlledComponentsExample = () => {
   const [inputValue, setInputValue] = useState('');
 
@@ -490,7 +440,7 @@ const ControlledComponentsExample = () => {
   );
 };
 
-export default ControlledComponentsExample;
+render(<ControlledComponentsExample />);
     `,
   },
 ];
