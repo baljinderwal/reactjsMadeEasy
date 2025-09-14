@@ -7,6 +7,10 @@ export const concepts = [
 const UseStateExample = () => {
   const [count, setCount] = useState(0);
 
+  useEffect(() => {
+    updateInspector('state', { count });
+  }, [count]);
+
   const increment = () => {
     setCount(count + 1);
   };
@@ -60,9 +64,11 @@ render(<JsxBasicsExample />);
     explanation: 'Props (short for properties) are read-only attributes used to pass data from a parent component to a child component.',
     code: `
 const ChildComponent = (props) => {
+  // This component is now a simple, presentational component.
+  // It receives props and renders them.
   return (
     <div style={{ border: '1px solid blue', padding: '10px', margin: '10px' }}>
-      <h4>Child Component</h4>
+      <h4>Child Component (id: {props.id})</h4>
       <p>Received message: "{props.message}"</p>
       <p>Number: {props.number}</p>
     </div>
@@ -70,14 +76,27 @@ const ChildComponent = (props) => {
 };
 
 const PropsExample = () => {
+  // The parent component defines the props for its children.
+  const child1Props = { message: "Hello from the parent!", number: 42, id: "child1" };
+  const child2Props = { message: "Another message", number: 100, id: "child2" };
+
+  // The parent is responsible for reporting the props to the inspector.
+  // This useEffect runs only once, providing a stable view of the props.
+  useEffect(() => {
+    updateInspector('PropsExample', {
+      'Props for child1': child1Props,
+      'Props for child2': child2Props
+    });
+  }, []);
+
   return (
     <div>
       <h3>Props Example</h3>
       <p>
         This component passes data down to a child component using props.
       </p>
-      <ChildComponent message="Hello from the parent!" number={42} />
-      <ChildComponent message="Another message" number={100} />
+      <ChildComponent {...child1Props} />
+      <ChildComponent {...child2Props} />
     </div>
   );
 };
@@ -229,6 +248,10 @@ function reducer(state, action) {
 const UseReducerExample = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  useEffect(() => {
+    updateInspector('state', state);
+  }, [state.count]);
+
   return (
     <div>
       <p>Count: {state.count}</p>
@@ -335,6 +358,10 @@ const GuestGreeting = () => <h2>Please sign up.</h2>;
 
 const ConditionalRenderingExample = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    updateInspector('state', { isLoggedIn });
+  }, [isLoggedIn]);
 
   const handleLoginClick = () => {
     setIsLoggedIn(true);
